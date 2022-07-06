@@ -30,7 +30,6 @@
 				<extensions>true</extensions>
 				<configuration>
 					<standaloneDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
 						<username>lthandra_eshia_jul</username>
 						<muleHome>C:\mule-ee-distribution-standalone-4.4.0\mule-enterprise-standalone-4.4.0</muleHome>
