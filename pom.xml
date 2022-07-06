@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -13,7 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.4.0-20220622</app.runtime>
-		<mule.maven.plugin.version>3.6.3</mule.maven.plugin.version>
+		<mule.tools.version>1.2</mule.tools.version>
+		<project.site.deploy.url>C:\mule-ee-distribution-standalone-4.4.0\mule-enterprise-standalone-4.4.0\apps\</project.site.deploy.url>
 	</properties>
 
 	<build>
@@ -25,18 +28,69 @@
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>3.6.3</version>
-				<extensions>true</extensions>
+				<artifactId>mule-app-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<copyToAppsDirectory>true</copyToAppsDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>depoly</phase>
+						<goals>
+						<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<version>2.8.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.3.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-JAR-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource><directory>src/main/app</directory></resource>
+								<resource><directory>src/main/api</directory></resource>
+								<resource><directory>mappings</directory></resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<configuration>
 					<standaloneDeployment>
-						<muleVersion>4.4.0</muleVersion>
 						<username>lthandra_eshia_jul</username>
-						<muleHome>C:\mule-ee-distribution-standalone-4.4.0\mule-enterprise-standalone-4.4.0</muleHome>
 						<password>Nanilucky143$</password>
 						<applicationName>cicd-on-premise</applicationName>
 						<environment>Sandbox</environment>
-						<target>C:\mule-ee-distribution-standalone-4.4.0\mule-enterprise-standalone-4.4.0\apps</target>
+						<target>local</target>
 						<targetType>server</targetType>
 					</standaloneDeployment>
 					<classifier>mule-application</classifier>
@@ -44,7 +98,14 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>deploymentServer</id>
+			<name>Corporate Repository</name>
+			<url>${project.site.deploy.url}</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
