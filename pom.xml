@@ -22,6 +22,15 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.mule.tools</groupId>
+				<artifactId>maven-mule-plugin</artifactId>
+				<version>1.9</version>
+				<extensions>true</extensions>
+				<configuration>
+					<excludeMuleDependencies>false</excludeMuleDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
 				<version>1.2</version>
@@ -36,7 +45,7 @@
 						<id>default-deploy</id>
 						<phase>depoly</phase>
 						<goals>
-						<goal>deploy</goal>
+							<goal>deploy</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -65,9 +74,15 @@
 						</goals>
 						<configuration>
 							<resources>
-								<resource><directory>src/main/app</directory></resource>
-								<resource><directory>src/main/api</directory></resource>
-								<resource><directory>mappings</directory></resource>
+								<resource>
+									<directory>src/main/app</directory>
+								</resource>
+								<resource>
+									<directory>src/main/api</directory>
+								</resource>
+								<resource>
+									<directory>mappings</directory>
+								</resource>
 							</resources>
 						</configuration>
 					</execution>
