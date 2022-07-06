@@ -97,8 +97,8 @@
 						<username>lthandra_eshia_jul</username>
 						<password>Nanilucky143$</password>
 						<applicationName>cicd-on-premise</applicationName>
-						<muleHome>C:\mule-ee-distribution-standalone-4.4.0\mule-enterprise-standalone-4.4.0\apps\</muleHome>
-      					<muleVersion>4.4.0</muleVersion>
+						<muleHome>${mule.home}</muleHome>
+      					<muleVersion>${mule.version}</muleVersion>
 						<environment>Sandbox</environment>
 						<target>local</target>
 						<targetType>server</targetType>
