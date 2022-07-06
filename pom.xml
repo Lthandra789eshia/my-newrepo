@@ -34,11 +34,12 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>lthandra_eshia_jul</username>
 						<password>Nanilucky143$</password>
-						<applicationName>cicd-on-prem</applicationName>
+						<applicationName>cicd-on-premise</applicationName>
 						<environment>Sandbox</environment>
 						<target>local</target>
 						<targetType>server</targetType>
 					</standAloneDeployment>
+					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
