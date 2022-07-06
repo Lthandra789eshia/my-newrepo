@@ -34,7 +34,7 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>lthandra_eshia_jul</username>
 						<password>Nanilucky143$</password>
-						<applicationName>demo-on-prem</applicationName>
+						<applicationName>cicd-on-prem</applicationName>
 						<environment>Sandbox</environment>
 						<target>local</target>
 						<targetType>server</targetType>
